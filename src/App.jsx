@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import Login from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
+import FloatingThemeToggle from "./components/FloatingThemeToggle";
 
 const Portofolio = lazy(() => import("./Pages/Portofolio"));
 const ContactPage = lazy(() => import("./Pages/Contact"));
@@ -66,6 +67,7 @@ function App() {
   <AnimatedBackground />
 </div>
       <BrowserRouter>
+        <FloatingThemeToggle />
         <Routes>
           {/* PUBLIC */}
           <Route

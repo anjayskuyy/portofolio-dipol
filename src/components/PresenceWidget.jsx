@@ -79,25 +79,25 @@ export default function PresenceWidget() {
         glow: "shadow-green-500/20"
       },
       coding: {
-        bg: "from-blue-500/15 to-indigo-500/10",
+        bg: "from-blue-500/15 to-blue-500/10",
         border: "border-blue-500/30",
         text: "text-blue-400",
         badge: "bg-blue-500/20 border-blue-400/40",
         glow: "shadow-blue-500/20"
       },
       gaming: {
-        bg: "from-red-500/15 to-pink-500/10",
+        bg: "from-red-500/15 to-sky-500/10",
         border: "border-red-500/30",
         text: "text-red-400",
         badge: "bg-red-500/20 border-red-400/40",
         glow: "shadow-red-500/20"
       },
       default: {
-        bg: "from-purple-500/15 to-violet-500/10",
-        border: "border-purple-500/30",
-        text: "text-purple-400",
-        badge: "bg-purple-500/20 border-purple-400/40",
-        glow: "shadow-purple-500/20"
+        bg: "from-sky-500/15 to-sky-500/10",
+        border: "border-sky-500/30",
+        text: "text-sky-400",
+        badge: "bg-sky-500/20 border-sky-400/40",
+        glow: "shadow-sky-500/20"
       }
     };
     return colors[type] || colors.default;
@@ -127,7 +127,7 @@ export default function PresenceWidget() {
                   
                   {/* Icon/Image */}
                   <div className="relative flex-shrink-0">
-                    <div className="w-14 h-14 rounded-lg overflow-hidden bg-black/20 backdrop-blur-sm ring-2 ring-white/10 group-hover:ring-white/20 transition-all duration-300">
+                    <div className="w-14 h-14 rounded-lg overflow-hidden bg-black/20 backdrop-blur-sm ring-2 ring-fg/10 group-hover:ring-fg/20 transition-all duration-300">
                       {act.image ? (
                         <img 
                           src={act.image} 
@@ -155,9 +155,9 @@ export default function PresenceWidget() {
                     {act.type === "spotify" && (
                       <div className="absolute -bottom-0.5 -right-0.5 bg-green-500 rounded p-0.5 shadow-lg">
                         <div className="flex items-end gap-0.5 h-2">
-                          <div className="w-0.5 bg-white rounded-full animate-music-1"></div>
-                          <div className="w-0.5 bg-white rounded-full animate-music-2"></div>
-                          <div className="w-0.5 bg-white rounded-full animate-music-3"></div>
+                          <div className="w-0.5 bg-fg rounded-full animate-music-1"></div>
+                          <div className="w-0.5 bg-fg rounded-full animate-music-2"></div>
+                          <div className="w-0.5 bg-fg rounded-full animate-music-3"></div>
                         </div>
                       </div>
                     )}
@@ -172,10 +172,10 @@ export default function PresenceWidget() {
                       </span>
                     </div>
                     
-                    <h3 className="text-white font-bold text-sm truncate mb-0.5">
+                    <h3 className="text-fg font-bold text-sm truncate mb-0.5">
                       {act.title}
                     </h3>
-                    <p className="text-white/60 text-xs truncate">
+                    <p className="text-fg/60 text-xs truncate">
                       {act.subtitle}
                     </p>
                   </div>

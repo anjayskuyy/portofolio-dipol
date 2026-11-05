@@ -14,8 +14,8 @@ import {
 
 const Card = ({ children, className = "" }) => (
   <div className={`relative group ${className}`}>
-    <div className="absolute -inset-0.5 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-2xl blur opacity-10 group-hover:opacity-25 transition duration-500" />
-    <div className="relative bg-white/5 backdrop-blur-xl border border-white/12 rounded-2xl h-full">
+    <div className="absolute -inset-0.5 bg-gradient-to-r from-accent to-accent2 rounded-2xl blur opacity-10 group-hover:opacity-25 transition duration-500" />
+    <div className="relative bg-fg/5 backdrop-blur-xl border border-fg/12 rounded-2xl h-full">
       {children}
     </div>
   </div>
@@ -30,7 +30,7 @@ const InputField = ({
   required = false,
 }) => (
   <div className="space-y-1.5">
-    <label className="text-xs text-indigo-300/70 uppercase tracking-wider font-medium">
+    <label className="text-xs text-blue-300/70 uppercase tracking-wider font-medium">
       {label}
     </label>
     <input
@@ -39,32 +39,32 @@ const InputField = ({
       onChange={onChange}
       placeholder={placeholder}
       required={required}
-      className="w-full bg-[#0d0d22] border border-white/10 rounded-xl px-4 py-2.5 text-gray-200 placeholder-gray-600 text-sm outline-none focus:border-indigo-500/60 focus:ring-1 focus:ring-indigo-500/20 transition-all"
+      className="w-full bg-surface border border-fg/10 rounded-xl px-4 py-2.5 text-gray-200 placeholder-gray-600 text-sm outline-none focus:border-blue-500/60 focus:ring-1 focus:ring-blue-500/20 transition-all"
     />
   </div>
 );
 
 const SkeletonCard = () => (
   <div className="relative">
-    <div className="absolute -inset-0.5 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-2xl blur opacity-10" />
-    <div className="relative bg-white/5 border border-white/12 rounded-2xl p-4 flex flex-col gap-3">
-      <div className="w-full aspect-[16/8] bg-white/5 animate-pulse rounded-xl" />
-      <div className="h-4 bg-white/5 animate-pulse rounded-lg w-2/3" />
-      <div className="h-3 bg-white/5 animate-pulse rounded-lg w-full" />
-      <div className="h-3 bg-white/5 animate-pulse rounded-lg w-4/5" />
+    <div className="absolute -inset-0.5 bg-gradient-to-r from-accent to-accent2 rounded-2xl blur opacity-10" />
+    <div className="relative bg-fg/5 border border-fg/12 rounded-2xl p-4 flex flex-col gap-3">
+      <div className="w-full aspect-[16/8] bg-fg/5 animate-pulse rounded-xl" />
+      <div className="h-4 bg-fg/5 animate-pulse rounded-lg w-2/3" />
+      <div className="h-3 bg-fg/5 animate-pulse rounded-lg w-full" />
+      <div className="h-3 bg-fg/5 animate-pulse rounded-lg w-4/5" />
       <div className="flex gap-1.5 mt-1">
-        <div className="h-5 w-16 bg-white/5 animate-pulse rounded-full" />
-        <div className="h-5 w-12 bg-white/5 animate-pulse rounded-full" />
-        <div className="h-5 w-20 bg-white/5 animate-pulse rounded-full" />
+        <div className="h-5 w-16 bg-fg/5 animate-pulse rounded-full" />
+        <div className="h-5 w-12 bg-fg/5 animate-pulse rounded-full" />
+        <div className="h-5 w-20 bg-fg/5 animate-pulse rounded-full" />
       </div>
-      <div className="flex justify-between items-center pt-2 border-t border-white/8 mt-auto">
+      <div className="flex justify-between items-center pt-2 border-t border-fg/8 mt-auto">
         <div className="flex gap-2">
-          <div className="w-7 h-7 bg-white/5 animate-pulse rounded-lg" />
-          <div className="w-7 h-7 bg-white/5 animate-pulse rounded-lg" />
+          <div className="w-7 h-7 bg-fg/5 animate-pulse rounded-lg" />
+          <div className="w-7 h-7 bg-fg/5 animate-pulse rounded-lg" />
         </div>
         <div className="flex gap-2">
-          <div className="w-14 h-7 bg-white/5 animate-pulse rounded-lg" />
-          <div className="w-16 h-7 bg-white/5 animate-pulse rounded-lg" />
+          <div className="w-14 h-7 bg-fg/5 animate-pulse rounded-lg" />
+          <div className="w-16 h-7 bg-fg/5 animate-pulse rounded-lg" />
         </div>
       </div>
     </div>
@@ -78,9 +78,9 @@ const ProjectCard = ({ project, onDelete, onEdit }) => {
     <Card>
       <div className="p-4 flex flex-col h-full">
         {project.Img && (
-          <div className="w-full aspect-[16/8] rounded-xl mb-4 border border-white/8 overflow-hidden bg-white/5">
+          <div className="w-full aspect-[16/8] rounded-xl mb-4 border border-fg/8 overflow-hidden bg-fg/5">
             {!imgLoaded && (
-              <div className="w-full h-full animate-pulse bg-white/5" />
+              <div className="w-full h-full animate-pulse bg-fg/5" />
             )}
             <img
               src={project.Img}
@@ -90,7 +90,7 @@ const ProjectCard = ({ project, onDelete, onEdit }) => {
             />
           </div>
         )}
-        <h3 className="font-semibold text-white text-sm mb-1">
+        <h3 className="font-semibold text-fg text-sm mb-1">
           {project.Title}
         </h3>
         {project.Description && (
@@ -103,21 +103,21 @@ const ProjectCard = ({ project, onDelete, onEdit }) => {
             {project.TechStack.map((t) => (
               <span
                 key={t}
-                className="px-2 py-0.5 rounded-full bg-indigo-500/15 border border-indigo-500/25 text-indigo-300 text-xs"
+                className="px-2 py-0.5 rounded-full bg-blue-500/15 border border-blue-500/25 text-blue-300 text-xs"
               >
                 {t}
               </span>
             ))}
           </div>
         )}
-        <div className="mt-auto flex items-center justify-between gap-2 pt-2 border-t border-white/8">
+        <div className="mt-auto flex items-center justify-between gap-2 pt-2 border-t border-fg/8">
           <div className="flex gap-2">
             {project.Link && (
               <a
                 href={project.Link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-1.5 rounded-lg border border-white/10 text-gray-500 hover:text-white hover:border-white/20 transition-colors"
+                className="p-1.5 rounded-lg border border-fg/10 text-gray-500 hover:text-fg hover:border-fg/20 transition-colors"
               >
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
@@ -127,7 +127,7 @@ const ProjectCard = ({ project, onDelete, onEdit }) => {
                 href={project.Github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-1.5 rounded-lg border border-white/10 text-gray-500 hover:text-white hover:border-white/20 transition-colors"
+                className="p-1.5 rounded-lg border border-fg/10 text-gray-500 hover:text-fg hover:border-fg/20 transition-colors"
               >
                 <Github className="w-3.5 h-3.5" />
               </a>
@@ -136,7 +136,7 @@ const ProjectCard = ({ project, onDelete, onEdit }) => {
           <div className="flex gap-2">
             <button
               onClick={() => onEdit(project)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-indigo-500/25 text-indigo-400 hover:bg-indigo-500/10 text-xs transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-blue-500/25 text-blue-400 hover:bg-blue-500/10 text-xs transition-colors"
             >
               <Pencil className="w-3 h-3" /> Edit
             </button>
@@ -163,15 +163,15 @@ const Modal = ({ title, onClose, children }) => (
       className="relative z-10 w-full max-w-2xl flex flex-col"
       style={{ maxHeight: "calc(100vh - 24px)" }}
     >
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-2xl blur opacity-20 pointer-events-none" />
-      <div className="relative bg-[#0a0a1a] border border-white/12 rounded-2xl flex flex-col overflow-hidden">
+      <div className="absolute -inset-0.5 bg-gradient-to-r from-accent to-accent2 rounded-2xl blur opacity-20 pointer-events-none" />
+      <div className="relative bg-surface border border-fg/12 rounded-2xl flex flex-col overflow-hidden">
         {/* Fixed header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-white/8 shrink-0">
-          <h2 className="text-base font-semibold text-white">{title}</h2>
+        <div className="flex items-center justify-between px-5 py-4 border-b border-fg/8 shrink-0">
+          <h2 className="text-base font-semibold text-fg">{title}</h2>
           <button
             type="button"
             onClick={onClose}
-            className="p-1 text-gray-500 hover:text-white transition-colors"
+            className="p-1 text-gray-500 hover:text-fg transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -234,7 +234,7 @@ const ProjectForm = ({
         </div>
 
         <div className="sm:col-span-2 space-y-1.5">
-          <label className="text-xs text-indigo-300/70 uppercase tracking-wider font-medium">
+          <label className="text-xs text-blue-300/70 uppercase tracking-wider font-medium">
             Description
           </label>
           <textarea
@@ -242,7 +242,7 @@ const ProjectForm = ({
             onChange={set("Description")}
             placeholder="Describe what this project does, its purpose, and impact..."
             rows={3}
-            className="w-full bg-[#0d0d22] border border-white/10 rounded-xl px-4 py-2.5 text-gray-200 placeholder-gray-600 text-sm outline-none focus:border-indigo-500/60 focus:ring-1 focus:ring-indigo-500/20 transition-all resize-none"
+            className="w-full bg-surface border border-fg/10 rounded-xl px-4 py-2.5 text-gray-200 placeholder-gray-600 text-sm outline-none focus:border-blue-500/60 focus:ring-1 focus:ring-blue-500/20 transition-all resize-none"
           />
         </div>
 
@@ -272,18 +272,18 @@ const ProjectForm = ({
         />
 
         <div className="sm:col-span-2 space-y-1.5">
-          <label className="text-xs text-indigo-300/70 uppercase tracking-wider font-medium">
+          <label className="text-xs text-blue-300/70 uppercase tracking-wider font-medium">
             Project Image
           </label>
-          <label className="flex items-center gap-4 w-full bg-[#0d0d22] border border-dashed border-white/15 rounded-xl px-4 py-4 cursor-pointer hover:border-indigo-500/40 hover:bg-white/4 transition-all">
+          <label className="flex items-center gap-4 w-full bg-surface border border-dashed border-fg/15 rounded-xl px-4 py-4 cursor-pointer hover:border-blue-500/40 hover:bg-fg/4 transition-all">
             {preview ? (
               <img
                 src={preview}
-                className="h-16 w-24 object-cover rounded-lg border border-white/10"
+                className="h-16 w-24 object-cover rounded-lg border border-fg/10"
                 alt="preview"
               />
             ) : (
-              <div className="w-24 h-16 rounded-lg bg-white/5 flex items-center justify-center border border-white/10">
+              <div className="w-24 h-16 rounded-lg bg-fg/5 flex items-center justify-center border border-fg/10">
                 <ImageIcon className="w-5 h-5 text-gray-600" />
               </div>
             )}
@@ -309,17 +309,17 @@ const ProjectForm = ({
         <button
           type="button"
           onClick={onCancel}
-          className="px-4 py-2 rounded-xl border border-white/10 text-gray-400 hover:text-white text-sm transition-colors"
+          className="px-4 py-2 rounded-xl border border-fg/10 text-gray-400 hover:text-fg text-sm transition-colors"
         >
           Cancel
         </button>
         <button type="submit" disabled={uploading} className="relative group/s">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-[#4f52c9] to-[#8644c5] rounded-xl opacity-60 blur group-hover/s:opacity-100 transition duration-300" />
-          <div className="relative flex items-center gap-2 px-5 py-2 bg-[#030014] rounded-xl border border-white/10">
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-[#2563eb] to-[#0284c7] rounded-xl opacity-60 blur group-hover/s:opacity-100 transition duration-300" />
+          <div className="relative flex items-center gap-2 px-5 py-2 bg-base rounded-xl border border-fg/10">
             {uploading ? (
-              <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+              <div className="w-4 h-4 border-2 border-fg/20 border-t-accent rounded-full animate-spin" />
             ) : (
-              <Upload className="w-4 h-4 text-indigo-400" />
+              <Upload className="w-4 h-4 text-blue-400" />
             )}
             <span className="text-sm text-gray-200">
               {uploading ? "Saving..." : submitLabel}
@@ -420,13 +420,13 @@ export default function Projects() {
       <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
         <div className="flex items-center gap-3">
           <div className="relative">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-xl blur opacity-50" />
-            <div className="relative w-9 h-9 bg-[#030014] rounded-xl border border-white/15 flex items-center justify-center">
-              <FolderGit2 className="w-4 h-4 text-indigo-400" />
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-accent to-accent2 rounded-xl blur opacity-50" />
+            <div className="relative w-9 h-9 bg-base rounded-xl border border-fg/15 flex items-center justify-center">
+              <FolderGit2 className="w-4 h-4 text-blue-400" />
             </div>
           </div>
           <div>
-            <h1 className="text-xl sm:text-2xl font-bold text-white">
+            <h1 className="text-xl sm:text-2xl font-bold text-fg">
               Projects
             </h1>
             <p className="text-gray-500 text-xs">
@@ -439,9 +439,9 @@ export default function Projects() {
           onClick={() => setShowCreate(true)}
           className="relative group shrink-0"
         >
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-[#4f52c9] to-[#8644c5] rounded-xl opacity-50 blur group-hover:opacity-80 transition duration-300" />
-          <div className="relative flex items-center gap-2 px-4 py-2.5 bg-[#030014] rounded-xl border border-white/10">
-            <Plus className="w-4 h-4 text-indigo-400" />
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-[#2563eb] to-[#0284c7] rounded-xl opacity-50 blur group-hover:opacity-80 transition duration-300" />
+          <div className="relative flex items-center gap-2 px-4 py-2.5 bg-base rounded-xl border border-fg/10">
+            <Plus className="w-4 h-4 text-blue-400" />
             <span className="text-sm text-gray-200">New Project</span>
           </div>
         </button>

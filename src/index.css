@@ -2,6 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =========================================================
+   TEMA: gelap (hitam-biru) & terang (putih-biru)
+   Diatur lewat atribut data-theme di <html>.
+   Nilai berupa "R G B" supaya bisa dipakai dengan alpha.
+   ========================================================= */
+:root,
+:root[data-theme="dark"] {
+	color-scheme: dark;
+	--bg: 2 6 23; /* hitam kebiruan */
+	--surface: 8 15 36;
+	--fg: 255 255 255;
+	--accent: 59 130 246; /* blue-500 */
+	--accent2: 56 189 248; /* sky-400 */
+
+	--gray-100: 243 244 246;
+	--gray-200: 229 231 235;
+	--gray-300: 209 213 219;
+	--gray-400: 156 163 175;
+	--gray-500: 107 114 128;
+	--gray-600: 75 85 99;
+	--gray-700: 55 65 81;
+
+	--blue-100: 219 234 254;
+	--blue-200: 191 219 254;
+	--blue-300: 147 197 253;
+	--blue-400: 96 165 250;
+	--sky-200: 186 230 253;
+	--sky-300: 125 211 252;
+	--sky-400: 56 189 248;
+	--red-400: 248 113 113;
+}
+
+:root[data-theme="light"] {
+	color-scheme: light;
+	--bg: 244 248 255; /* putih kebiruan */
+	--surface: 255 255 255;
+	--fg: 15 23 42; /* navy gelap */
+	--accent: 37 99 235; /* blue-600 */
+	--accent2: 14 165 233; /* sky-500 */
+
+	--gray-100: 15 23 42;
+	--gray-200: 30 41 59;
+	--gray-300: 51 65 85;
+	--gray-400: 71 85 105;
+	--gray-500: 100 116 139;
+	--gray-600: 148 163 184;
+	--gray-700: 203 213 225;
+
+	--blue-100: 30 58 138;
+	--blue-200: 30 64 175;
+	--blue-300: 29 78 216;
+	--blue-400: 37 99 235;
+	--sky-200: 7 89 133;
+	--sky-300: 3 105 161;
+	--sky-400: 2 132 199;
+	--red-400: 220 38 38;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -9,14 +67,44 @@
 	  font-family: "Poppins", system-ui, sans-serif;
 	scroll-behavior: smooth;
 	scrollbar-width: thin;
-	scrollbar-color: rgba(99, 102, 241, 0.3) rgba(12, 5, 53, 0.356);
+	scrollbar-color: rgb(var(--accent) / 0.4) rgb(var(--bg) / 0.4);
 }
 
 html,
 body {
 	overflow-x: hidden;
-	background: #030014;
+	background: rgb(var(--bg));
+	color: rgb(var(--fg));
 	scroll-behavior: smooth !important;
+}
+
+/* Tema terang: kartu/chip "kaca" (tint navy) diganti putih semi-transparan
+   supaya terlihat bersih, bukan kelabu. */
+:root[data-theme="light"] .bg-fg\/5 {
+	background-color: rgb(255 255 255 / 0.72);
+}
+:root[data-theme="light"] .bg-fg\/10,
+:root[data-theme="light"] .hover\:bg-fg\/10:hover {
+	background-color: rgb(255 255 255 / 0.9);
+}
+/* Panel bergradient (Comments & Connect With Me) → putih lembut di tema terang */
+:root[data-theme="light"] .from-fg\/10 {
+	--tw-gradient-from: rgb(255 255 255 / 0.92) var(--tw-gradient-from-position);
+	--tw-gradient-to: rgb(255 255 255 / 0.6) var(--tw-gradient-to-position);
+	--tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+/* Ilustrasi hero (GIF) punya bagian abu-terang → beri bayangan biru di tema terang */
+:root[data-theme="light"] img[alt="Developer Animation"] {
+	filter: drop-shadow(0 14px 30px rgb(37 99 235 / 0.28));
+}
+
+/* Transisi halus saat tema diganti (dipasang sebentar saja oleh toggle) */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+	transition: background-color 0.35s ease, border-color 0.35s ease,
+		color 0.35s ease, fill 0.35s ease, stroke 0.35s ease !important;
 }
 
 
@@ -50,39 +138,39 @@ body {
   }
   
   ::-webkit-scrollbar-track {
-	background: rgba(3, 0, 20, 0.4);
+	background: rgb(var(--bg) / 0.4);
 	backdrop-filter: blur(8px);
 	-webkit-backdrop-filter: blur(8px);
-	border: 1px solid rgba(99, 102, 241, 0.1);
+	border: 1px solid rgb(var(--accent) / 0.1);
   }
   
   ::-webkit-scrollbar-thumb {
-	background: rgba(99, 102, 241, 0.3);
+	background: rgb(var(--accent) / 0.4);
 	backdrop-filter: blur(4px);
 	-webkit-backdrop-filter: blur(4px);
 	border-radius: 20px;
-	border: 1px solid rgba(255, 255, 255, 0.1);
+	border: 1px solid rgb(var(--fg) / 0.1);
 	box-shadow: 
-	  inset 0 0 20px rgba(168, 85, 247, 0.2),
-	  0 0 10px rgba(99, 102, 241, 0.2);
+	  inset 0 0 20px rgb(var(--accent2) / 0.2),
+	  0 0 10px rgb(var(--accent) / 0.2);
 	transition: all 0.3s ease;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-	background: rgba(99, 102, 241, 0.5);
-	border: 1px solid rgba(168, 85, 247, 0.3);
+	background: rgb(var(--accent) / 0.6);
+	border: 1px solid rgb(var(--accent2) / 0.3);
 	box-shadow: 
-	  inset 0 0 30px rgba(168, 85, 247, 0.3),
-	  0 0 15px rgba(99, 102, 241, 0.3);
+	  inset 0 0 30px rgb(var(--accent2) / 0.3),
+	  0 0 15px rgb(var(--accent) / 0.3);
   }
   
   /* When scrollbar is in active/clicked state */
   ::-webkit-scrollbar-thumb:active {
-	background: rgba(99, 102, 241, 0.6);
-	border: 1px solid rgba(168, 85, 247, 0.4);
+	background: rgb(var(--accent) / 0.8);
+	border: 1px solid rgb(var(--accent2) / 0.4);
 	box-shadow: 
-	  inset 0 0 40px rgba(168, 85, 247, 0.4),
-	  0 0 20px rgba(99, 102, 241, 0.4);
+	  inset 0 0 40px rgb(var(--accent2) / 0.4),
+	  0 0 20px rgb(var(--accent) / 0.4);
   }
   
   ::-webkit-scrollbar-corner {
